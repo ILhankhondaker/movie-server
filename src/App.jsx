@@ -17,7 +17,12 @@ function App() {
       <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
         <MovieContext.Provider value={{ state, dispatch }}>
           <Page />
-          <ToastContainer />
+          {/* <ToastContainer /> */}
+          <ToastContainer
+            autoClose={1500}
+          >
+
+          </ToastContainer>
         </MovieContext.Provider>
       </ThemeContext.Provider>
     </>
