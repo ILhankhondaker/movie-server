@@ -1,12 +1,27 @@
+import { useState, useReducer } from "react";
+import { MovieContext, ThemeContext } from "./context"
+import Page from "./Components/Page/Page";
+import { cartReducer, initialState } from "./reducers/cartReducer";
+
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
+
+  const [darkMode, setDarkMode] = useState(true);
+  const [state, dispatch] = useReducer(cartReducer, initialState);
   return (
     <>
-      <h1 className="text-center text-green-500 text-3xl font-bold">Bisimillah Start a new project </h1>
-
+      <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+        <MovieContext.Provider value={{ state, dispatch }}>
+          <Page />
+          <ToastContainer />
+        </MovieContext.Provider>
+      </ThemeContext.Provider>
     </>
-  )
+  );
 }
 
 export default App
